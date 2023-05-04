@@ -57,6 +57,11 @@
             filter: drop-shadow(8px 8px 10px red);
         }
 
+        .contrast {
+            -webkit-filter:contrast(500%);
+            filter: contrast(500%);
+        }
+
         button#snapshot {
             margin: 0 10px 25px 0;
             width: 110px;
@@ -89,6 +94,7 @@
         <option value="invert">Invert</option>
         <option value="sepia">Sepia</option>
         <option value="drop_shadow">Drop shadow</option>
+        <option value="contrast">Contrast</option>
     </select>
 
     
@@ -139,14 +145,15 @@
     <script>
         var slider = document.getElementById("myRange");
         var output = document.getElementById("demo");
-        var filter_type = document.getElementById("filter")
+        
         output.innerHTML = slider.value;
         
         //filter_type.style.filter = "grayscale("+slider.value+"%)";
         
         slider.oninput = function() {
           output.innerHTML = this.value;
-          filter_type.style["-vendor-filter"] = this.value+"px";
+          getElementById("blur").style["filter"] = this.value+"px";
+          document.getElementsByClassName("blur").style.filter = "blur(50px)";
           
           
         }
